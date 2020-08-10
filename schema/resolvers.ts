@@ -10,7 +10,7 @@ const resolvers = {
       return messages.filter((m) => chat.messages.includes(m.id));
     },
     lastMessage(chat: any) {
-      const lastMessage = chat.messages[chat.messages.length -1];
+      const lastMessage = chat.messages[chat.messages.length - 1];
       return messages.find((m) => m.id === lastMessage);
     },
   },
@@ -18,6 +18,10 @@ const resolvers = {
   Query: {
     chats() {
       return chats;
+    },
+
+    chat(root: any, { chatId }: any) {
+      return chats.find((c) => c.id === chatId);
     },
   },
 };
